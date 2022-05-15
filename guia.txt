@@ -7,3 +7,10 @@ git branch -M main
 git remote add origin https://github.com/TorinoOne/Study.git
 git push -u origin main
 
+PARA LOS YA CREADOS:
+
+git add archivo.tipo
+
+git commit -m "X"
+
+git push
