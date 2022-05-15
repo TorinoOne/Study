@@ -1,0 +1,8 @@
+Problema 1
+    Pantalla debe tener:
+        Ser full HD
+        Preguntarle si esta seguro al momento de 
+            comprar
+        Mostrar suficiente datos para conocer la web
+
+ 
