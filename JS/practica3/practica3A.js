@@ -5,7 +5,7 @@
 
 //Implementar todas estas cualidades en celulares de alta
 //    gama. Graban en camara lenta, tienen reconocimiento facial
-//    y una camara extra.
+//    y una camara extra.   ///COMPLETADO
 //----------------------------------------------------------------
 
 class Celular {
