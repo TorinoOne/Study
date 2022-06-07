@@ -176,6 +176,22 @@ document.write(href)
             //funciona de la misma manera que el anterior pero sobre interval
 //------------------------------------------------------------------------------------------
 
+//          CONTROL DE FLUJO Y MANEJO DE ERRORES
 
+//Sentencias de bloque
+
+//Sentencias de control de flujo
+
+//Sentencias de manejo de excepciones
+
+//-----------------------------------------------------------
+
+//          SENTENCIA SWITCH
+
+//Sintaxis y 
+
+//Break
+
+//Default
 
 
