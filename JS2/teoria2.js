@@ -178,20 +178,96 @@ document.write(href)
 
 //          CONTROL DE FLUJO Y MANEJO DE ERRORES
 
+
 //Sentencias de bloque
+    //Creamos un nuevo ambito de las variables
 
 //Sentencias de control de flujo
+    //Con el control del flujo controlamos la ejecucion
+        //o no del codigo con sentencias
 
 //Sentencias de manejo de excepciones
+    //Control y manejo de los errores
 
 //-----------------------------------------------------------
 
 //          SENTENCIA SWITCH
 
-//Sintaxis y 
+//Sintaxis
+    let expresion = "ElementoZ";
+    switch(expresion) {
+        case "ElementoX": console.log("RespuestaX"); break;
+        case "ElementoY": console.log("RespuestaY"); break;
+        case "ElementoZ": console.log("RespuestaZ"); break;
+    }
 
 //Break
 
 //Default
 
+//-----------------------------------------------------------
 
+//          EXCEPCIONES Y SUS TIPOS
+
+//Definicion y usos
+
+//Excepciones ECMAScript
+
+//DOMException y DOMError
+
+//-----------------------------------------------------------
+
+//          TRY...  CATCH
+
+//Sintaxis
+    //Try debe estar acompañado si o si del Catch o del Finally
+    try {
+        indefinido
+    }
+    catch(error) {
+        console.log("Ocurrio un error")
+    }
+
+//Objeto error
+
+//Catch Incondicional
+    //Es incondicional porque no posee una condicion dentro
+
+//Catch Condicional
+    //Es condicional porque dentro posee una condicional como
+        //un if
+        try {
+            indefinido
+        }
+        catch (error) {
+            if (x > y) {
+                console.log ("X");
+            } else {
+                console.log ("Y");
+            }
+
+        }
+
+//Sentencia Throw
+
+//Finally
+    //Se ejecuta a toda costa, posee prioridad y sobreescribe
+        //el valor es utilizado como cierre
+        try {
+            indefinido
+        }
+        catch (error) {
+            alert ("X");
+        }
+        finally {
+            alert ("Y");
+        }
+
+//-----------------------------------------------------------
+
+//          REVISAR PERMANENTEMENTE SI EL CODIGO QUE UTILIZAMOS
+        //  ESTA ACTUALIZADO O NO, AL IGUAL QUE LAS PAGINAS
+
+//          CALLBACKS
+
+//
