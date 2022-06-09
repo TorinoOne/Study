@@ -390,23 +390,102 @@ document.write(href)
     //Es JavaScript asincrono
     //Se ejecuta de forma paralela cuando el servidor nos envia datos, primero pasan por AJAX y luego los recibimos
 
-    //Buscar XAMPP para simular un servidor
+    //Buscar XAMPP para simular un servidor, buscar como instalarlo
 
 //Objeto XMLHttpRequest
 
-    const peticion = new XMLHttpRequest();
+    var peticion = new XMLHttpRequest();
     peticion.open("GET", "infor.txt");
     peticion.send();
 
 //Enviar peticiones GET
-
-//Trabajar el resultado de las peticiones
-
-//Objeto ActiveXObject
+    //Datos permanecen en el historial
+    //Datos son visibles en la URL
+    //Se puede guardar url con contenido de un envio de datos
+    //Existen restricciones de longitud
+    
 
 //Nueva forma de trabajar el resultado
 
+    var peticion = XMLHttpRequest();
+
+    peticion.addEventListener("load",()=> {
+        let respuesta;
+        if (peticion.status == 200) respuesta = peticion.response;
+        else respuesta = "No";
+        console.log(peticion.response)
+    })
+
+    peticion.open("GET", "informacion.txt");
+
+    peticion.send();
+
 //Enviar peticiones POST
+    //Se puede enviar cualquier tipo de datos
+    //Datos no permanecen en el historial
+    //Datos no son visibles en la URL
+    //No se puede guardar url con contenido de un envio de datos
+    //No existen restricciones de longitud
 
 //Objeto FormData
 
+//-----------------------------------------------------------
+//                  FETCH
+
+//Es una forma que tenemos de trabajar con AJAX
+
+//Basado en promesas
+    //Devuelve respuestas encapsuladas en promesas, se utilizan
+        // los metodos consecuentes para pasarlo a un tipo 
+        //de dato valido
+    
+//Objeto fetch
+    peticion = fetch("https://link") //posee el metodo get por defecto
+        console.log(peticion)
+    
+    peticion.then(res=>console.log(res)); //sigue encapsulado
+    fetch("https://link")
+//text()
+        .then(res=>res.text()) //devuelve peticion encapsulada
+        .then(res=>console.log(res)) //y con esto accedemos
+        console.log(peticion)
+//json()
+        //enviar metodo post
+    fetch("https://link" , {
+        method : "POST",
+        body : `{"nombre" : "x"}`,
+        headers: {"Content-type" : "app/json"}
+    })
+        .then(res=>res.json())
+        .then(rest=>console.log(res))
+//blob()
+        //Regresa un nuevo objeto creado cuyo contenido consiste
+            //en la concatenacion de un arreglo de valores
+            //establecidos en el parametro de la funcion
+
+//formData()
+
+//arrayBuffer()
+
+//-----------------------------------------------------------
+//                  LIBRERIA AXIOS
+
+//https://github.com/axios/axios
+    //Es el reemplazo de Fetch, basado el la version que sustituye Fetch
+    //Es muy utilizado, si es en forma masiva se utiliza este
+    //Basado en promesas
+        //Diferencia con Fetch
+
+            axios("info.txt") //si queremos agregar un metodo colocamos el punto y el metodo luego del axios
+                .then(res=>console.log(res)) //o res.data
+            //aplica todo de forma automatica
+
+
+//-----------------------------------------------------------
+//             FETCH Y AXIOS CON ASYNC AWAIT
+
+    const getName = async ()=> {
+        let peticion = await fetch("info.txt");
+        let resultado = await peticion.json();
+        console.log(resultado)
+    }
