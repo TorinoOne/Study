@@ -270,4 +270,143 @@ document.write(href)
 
 //          CALLBACKS
 
-//
+        //Una funcion con un metodo dentro, que es una funcion
+            //es defir una funcion dentro de otra funcion
+        //Funcion que llama a otra funcion 
+
+        function test (callback) {callback ("x");};
+
+        function run (elemento) {console.log(elemento)};
+
+        test(run);
+
+//          PROMESAS
+
+        //Es un objeto devuelto al cual se adjuntan funciones
+            //callback, en lugar de pasar callback a una funcion
+
+    let variableX = "x";
+
+    const promesa = new Promise ((resolve, reject)=>{
+        if (nombre !== "x") reject ("x'nt");
+        else resolve (variableX)
+    })
+
+    promesa.then((resultado)=> {
+        console.log(resultado)
+    }).catch((e)=> {
+        console.log(e)
+    })
+
+    //Podemos resolver todas las promesas con then y si tiene un error
+        //los acumulamos al final con catch
+
+
+    const promesaUno = (id) => { //el id es la iteracion
+        return new Promise ((resolve, reject)=> {
+            if (personas[id] == undefined) reject ("X")
+            else {resolve(personas[id])}
+        })
+    }
+    const promesaDos = (id) => {
+        return new Promise ((resolve, reject) => {
+            if (personas[id].instagram == undefined) reject ("Y")
+            else {resolve(personas[id].instagram)}
+        })
+    }
+    let id = 1;
+    promesaUno(id).then((resultado)=> {
+        console.log(persona.nombre);
+        return promesaDos(id)
+    }).then((instagram) =>{
+        console.log(instagram) //podemos repetir el then hasta el infinito siempre que tenga el catch al final
+    }).catch((err) => {
+        console.log(err)})
+
+
+//                  FUNCIONES ASINCRONAS
+//                      AWAIT & ASYNC
+
+    const objeto = {
+        propiedad1 : "valor1"
+    }
+
+    const obtenerInfo = ()=> {
+        return new Promise ((resolve, reject) => {
+            setTimeout(()=> {resolve(objeto)}, 3000)
+        })
+    }
+
+    const mostrar = async ()=> {
+        resultado = await obtenerInfo();
+        console.log(resultado)
+    }
+
+    mostrar();
+
+//ASYNC trabaja con promesas, basicamente accede al valor que
+    //retorna la promesa. Se ejecutara siempre en orden por mas 
+    //que este previamente establecido de forma random
+
+//                  PETICIONES HTTP
+
+//Definicion
+
+//Cliente y servidor
+    //Nosotros somos le cliente, el servidor el hoster que procesa
+
+//No guardan informacion 
+//-----------------------------------------------------------
+//                  DATOS ESTRUCTURADOS (JSON)
+
+//Definicion, usos y sintaxis
+    //En un objeto JSON define las propiedades entre comillas no en variables
+
+    objeto = {
+        "variable1" : "Pedro"
+    }
+    //JSON se creo con la intencion de enviar informacion al servidor
+        //con comillas porque al enviarlo en variables produce errores
+
+//Serializacion y deserializacion
+    //Cuando esta serializado significa que es una cadena de texto con formato JSON
+    objeto = '{"variable": "Valor, "variable2": "valor2"}';
+    //Cuando esta deserializado seria asi
+    objeto = {"variable1" : "Valor", "variable2" : "valor2"};
+    //Si no esta serializado se produce un error al enviar la informacion a traves de la red
+
+//Metodo parse() - convierte un string con estructura JSON a formato JSON (Deserializa)
+    const deserializado = JSON.parse(objeto)
+    console.log(typeof serializado)
+//Metodo stringify() - Convierte un dato de JavaScript en una cadena de texto JSON (Serializar)
+    const serializado = JSON.stringify(objeto)
+    console.log(typeof serializado)
+//JSON PolyFill
+    //Funcion que usamos para reemplazar el JSON. Buscar en internet.
+//-----------------------------------------------------------
+//                  AJAX
+
+//Introduccion e instalacion del servidor
+    //Es JavaScript asincrono
+    //Se ejecuta de forma paralela cuando el servidor nos envia datos, primero pasan por AJAX y luego los recibimos
+
+    //Buscar XAMPP para simular un servidor
+
+//Objeto XMLHttpRequest
+
+    const peticion = new XMLHttpRequest();
+    peticion.open("GET", "infor.txt");
+    peticion.send();
+
+//Enviar peticiones GET
+
+//Trabajar el resultado de las peticiones
+
+//Objeto ActiveXObject
+
+//Nueva forma de trabajar el resultado
+
+//Enviar peticiones POST
+
+//Objeto FormData
+
