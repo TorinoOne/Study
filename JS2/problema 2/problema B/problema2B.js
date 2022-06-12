@@ -1,4 +1,4 @@
-alumnos = [
+let alumnos = [
     {nombre: "Ignacio Rushel",
     email: "ignaciorushel@gmail.com",
     materia: "Fisica 3"},
@@ -16,6 +16,7 @@ alumnos = [
     materia: "Adaptabilida 0"}
 ];
 const boton = document.querySelector(".boton-confirmar");
+const contenedor = document.querySelector(".grid-container");
 
 for (alumno in alumnos) {
     let datos = alumnos[alumno];
@@ -27,19 +28,23 @@ for (alumno in alumnos) {
             <div class="grid-item email">${email}</div>
             <div class="grid-item materia">${materia}</div>
             <div class="grid-item semana">
-                <select name="semana-elegida">
+                <select class="semana-elegida">
                     <option value="Semana 1">Semana 1</option>
                     <option value="Semana 2">Semana 2</option>
                 </select>
             </div>`;
-    document.querySelector(".grid-container").innerHTML += htmlCode;
+    contenedor.innerHTML += htmlCode;
 }
 
 boton.addEventListener("click",()=>{
-    let elementos = document.querySelectorAll(".semana");
-    let semanasElegidas = document.querySelectorAll(".semana-elegida");
-    for (elemento in elementos) {
-        semana = elementos[elemento];
-        semana.innerHTML = semanasElegidas[elemento].value;
+    let confirmar = confirm ("¿Seguro?");
+    if (confirmar) {
+        document.body.removeChild(boton)
+        let elementos = document.querySelectorAll(".semana");
+        let semanasElegidas = document.querySelectorAll(".semana-elegida");
+        for (elemento in elementos) {
+            semana = elementos[elemento];
+            semana.innerHTML = semanasElegidas[elemento].value;
+        }
     }
 })
