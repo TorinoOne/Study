@@ -51,19 +51,127 @@
 
 //________________Modo Stricto ("use strict")_________________//
 //Definicion
-    //Es una forma de escritura actualizada
+    //Es una forma de escritura actualizada entre desarrolladores
     //Es muy importante hoy en dia
 
-//Convierte errores de JS en excepciones
+    //Convierte errores de JS en excepciones
+     nombre = "nombre"; // Esto en el modo estricto es un error
+      //pero en JS es una excepcion
 
-//Mejorando la optimizacion de los errores y consigue
-    //mejores tiempos de ejecucion
+    //Mejorando la optimizacion de los errores y consigue
+     //mejores tiempos de ejecucion
 
-//Evita sintaxis usadas en posteriores a ES6
+    //Evita sintaxis usadas en posteriores a ES6
 
-//No permite que el programador realize una mala sintaxis
+    //No permite que el programador realize una mala sintaxis
 
-//__________________________________________________________//
+//Uso
+    //En funciones y en el scope global
+    "use strict"; //Colocando esto al principio no permite la mala sintaxis
+    //Tambien se puede utilizar en funciones
+        function x(){
+            "use strict";
+            let elemento = "propiedad";
+            console.log(elemento);
+        }
+//Variables declaradas 
+
+    //Para declarar una variable usamos const, let, var 
+    nombre = "nombre"; //lanzara error
+    let nombre = "nombre"; //no lanzara error
+        //tambien nos obliga a colocar let y no var ya que por defecto todas son var
+
+//Modificar propiedades (defineProperty() y writable)
+
+    const object = {};
+    Object.defineProperty(obj,"nombre",{value: "value", writable: false});
+            //Colocando writable el valor no se puede reescribir
+                    object.nombre = "Roberto"; //tirara un error
+//Agregar propiedades
+
+    Object.preventExtensions(object); //De esta manera evitara agregar mas datos
+        //Haciendo esto con "use strict"; ya declarado en lugar
+            //de aclarar que es una excepcion tirara un error
+            
+//No se puede agregar propiedades a un string
+
+    const string = "elemento";
+    string.canal = "X";
+    console.log(string.canal); //Esto con use strict mostrara un error
+        //Mientras que sin use strict solo muestra una excepcion
+
+//No existen las multiples variables en una funcion
+
+    function x (elemento, elemento) {
+        console.log(elemento) //mostrara el ultimo parametro pasado
+    }
+    x("Y") //mostrara el ultimo elemento con este valor
+    //Con US no dejara llamar la funcion
+
+//Delete en objetos o variables
+    let variable = "propiedad";
+    delete variable;
+    console.log(variable) //Con el US mostrar un error, sin el mostrara
+    // la propiedad sin que se haya borrado
+
+    //Delete unicamente se puede utilizar para borrar propiedades
+        //de objetos
+
+//Las palabras reservadas no pueden ser usadas como variables
+
+    //De igual manera solo se puede utilizar el US para palabras
+        //no reservadas, es decir, si creamos una variable con delete
+        //o await, lanzara error
+
+//Cambia el this
+
+    //Genera que el this no tenga una funcion determinada y tenga
+        //de propiedad undefined
+
+//Numeros octales con una "o" adelante y no existe with
+
+    //Genera el mismo efecto anterior en el with
+    //Para trabajar con numeros habria que usar una O en frente
+    console.log(0o25);
+
+    console.log(025); //esto genera un error en US
+
+    //No son muy importante los numeros octales
+
+//Arguments y Eval no pueden ser variables
+
+    //Simplemente no se pueden ejecutar las palabras arguments y eval
+
+//______________________Funciones Flecas_______________________//
+
+//
+
+
+//
+
+
+//
+
+
+//
+
+
+//
+
+
+//
+
+
+//
+
+
+//
+
+
+//
+
+
+//
 
 //__________________________________________________________//
 
