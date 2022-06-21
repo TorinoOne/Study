@@ -144,35 +144,93 @@
 
 //______________________Funciones Flecas_______________________//
 
-//
+//Por que aparecieron, funciones compactas
+    //y el uso del This
+
+    //Las sentencias necesitan llaves mientras que las expresiones
+        //no les hace falta
+    let hey = ()=> propiedad = "string";
+    let hey1 = function() {return nombre = "pedro"};
+        //La primera es una funcion flecha sintetisada mientras
+            //que la segunda se muestra de forma mas extensa
+    
+//Si solo hay una expresion la retorna
+//Parentesis opcionales ante un solo parametro
+
+    let hello = ()=> console.log(); 
+        //si solo tiene una linea no hace flata el cierre
+    let hey3 = res => lastname = res; //De la misma forma
+        resultado = hey3("elemento");
+
+//No son adecuadas para ser usadas como
+    //como metodos ni contructores
+
+    let funcion = {
+        nombre : "string",
+        x : ()=>{console.log(`Hello ${this.nombre}`)}
+    } //El nombre no existe dentro de las funciones flechas
+        //La forma correcta seria Function (){Linea de code};
+
+//This contextual
+    //Afuera de una funcion sera window
+    //This debe responder unicamente a un objeto de lo contrario
+        //respondera a window o algun elemento en el con ese elemento
+        //al que esta llamando
+    //Las reglas de modo escrito aplicada a This
+        //son ignoradas
+        "use strict";
+        this.nombri = "nombre"; //Llamaria a este solo de ser flecha
+        function saludar() {
+            console.log(`Hello ${this.nombre}`)
+        }
+        const objeto = {
+            nombre: "Nombre",
+            saludar 
+        }
+        objeto.saludar() //Al ser normal llama al nombre en el obj
+
+//Funcion flecha invocada a traves de los metodos
+    //call, apply y bind
+ 
+//No tienen objeto arguments
+//No tienene propiedad del prototipo prototype
+//No se puede usar Yield (por ende no se pueden usar como funciones generadoras)
+//No puede contener saltos de linea entre sus paramentros y flecha
+//Orden de parseo
+//Retornan literales si su cuerpo esta entre ()
+
+//Funciones recursivas (Recursividad)
+    //Funcion que se llama a si misma
+    //Riesgo de generar bucle infinito
+
+    const validar = (msg) =>{
+        try {
+            if (msg) edad = prompt(msg);
+            else edad = prompt("Tu edad");
+            edad = parseInt(edad);
+            if (isNaN(edad)) throw "introduce un numero";
+            if (edad > 18) console.log ("Sos mayor");
+            else console.log("Sos menor");
+        } catch(e){
+            validar(e)
+        }
+    }
+    validar();
 
 
-//
+//Clausuras (o cierres)
 
 
-//
+//Parametros por defecto (validacion antigua vs actual)
 
 
-//
+//Parametros rest (...param)
 
 
-//
+//Destructuracion
 
 
-//
-
-
-//
-
-
-//
-
-
-//
-
-
-//
-
+//Destructurar Arrays y Objetos
 //__________________________________________________________//
 
 //__________________________________________________________//
