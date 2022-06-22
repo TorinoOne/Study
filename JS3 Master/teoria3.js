@@ -192,12 +192,12 @@
 //Funcion flecha invocada a traves de los metodos
     //call, apply y bind
  
-//No tienen objeto arguments
-//No tienene propiedad del prototipo prototype
-//No se puede usar Yield (por ende no se pueden usar como funciones generadoras)
-//No puede contener saltos de linea entre sus paramentros y flecha
-//Orden de parseo
-//Retornan literales si su cuerpo esta entre ()
+    //No tienen objeto arguments
+    //No tienene propiedad del prototipo prototype
+    //No se puede usar Yield (por ende no se pueden usar como funciones generadoras)
+    //No puede contener saltos de linea entre sus paramentros y flecha
+    //Orden de parseo
+    //Retornan literales si su cuerpo esta entre ()
 
 //Funciones recursivas (Recursividad)
     //Funcion que se llama a si misma
@@ -217,22 +217,92 @@
     }
     validar();
 
-
 //Clausuras (o cierres)
 
+    let cambio = tamaño =>{
+        return ()=> {
+            document.querySelector(".elementoHTML").style.fontSize = `${tamaño}px`; 
+        }
+    }
+    px12 = cambio(12);
 
 //Parametros por defecto (validacion antigua vs actual)
 
+    let suma = (a = 0, b = 0)=>{
+        console.log(a+b)
+    }
+    suma (12,12)
+    //de esta manera si no estuvieramos pasando valores el valor
+        //por defecto seria 12
 
 //Parametros rest (...param)
 
+    let sumados = (...num)=> {
+        console.log(num);
+    }
+    //De esta manera podemos pasar mas de un elemento a la suma
 
-//Destructuracion
+//Operador condicional (ternario) (if)
+    //Es la forma acordata de hacer un if
+    //Consume menos recursos
+
+    edad = 17 //Forma tradicional
+    if (edad >= 18) {
+        return("es mayor");
+    } else {
+        return("no es mayor");
+    }
+
+    (edad > 18) //Ternario
+    ? ( console.log("es mayor"),
+        console.log("podes pasar"))
+    : console.log("es menor")
 
 
-//Destructurar Arrays y Objetos
-//__________________________________________________________//
 
+//Operador Spread (spread operator)
+    //Añadir arrays a otros arrays
+    //Concatenar arrays, como argumento rest
+    //Es util para cuando hay datos masivos
+    console.log(...arr);
+    arr.push(...arr2); //Pusheara todos los elementos del array anterior
+    arr.push(arr2[0], arr2[1]) //Esto solo es util para cuando hay pocos elementos
+
+    let arr3 = [...arr1, ...arr2]; //Unimos dos arrays
+
+//______________________APIS WEBS______________________________//
+
+//Aplication programming interface
+    //Para conectar dos o mas apps entre si e intercambiar info
+    //O como herramientas propiedad de cada lenguaje
+    //Cualquier funcionalidad de los lenguajes es una appi
+
+//Objeto Date
+    //Funciona igual que los arrays en los dias y meses, arrranca
+        //Desde 0
+
+    let fecha = Date();
+    console.log(fecha); //Mostrara fecha
+
+    let fechax = new Date (); //De esta manera podemos trabajarlo como objeto
+    
+    console.log(fecha.getDate())//Devuelve el primer dia del mes
+    console.log(fecha.getDay())//Devuelve dia de la semana
+    console.log(fecha.getMonth())//Devuelve el mes
+    console.log(fecha.getYear())//Devuelve el año -1900
+    console.log(fecha.getHours())//Devuelve la hora
+    console.log(fecha.getMinutes())//Devuelve los minutos
+    console.log(fecha.getSeconds())//Devuelve los segundos
+
+    let fechaxs = new Date (10000); //Dentro estan los milisegundos que
+        //pasaron desde 1 de Enero de 1947 cuando se creo Unix Time
+    //Entonces la fecha arranca desde esa fecha mas los milisegundos
+
+    let fechasz = new Date (2022,6,21);
+    //Tambien podemos pasar la fecha en la que queremos que se arranque
+
+    console.log(Date.now()) //Mostrara los milisegundos que pasaron desde donde marquemos
+    
 //__________________________________________________________//
 
 //__________________________________________________________//
