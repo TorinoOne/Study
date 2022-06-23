@@ -303,6 +303,120 @@
 
     console.log(Date.now()) //Mostrara los milisegundos que pasaron desde donde marquemos
     
-//__________________________________________________________//
+//_________________LocalStorage y SessionStorage________________//
 
-//__________________________________________________________//
+//SessionStorage informacion almacenada en la sesion
+//LocalStorage informacion almacenada de forma local
+    //APPIS para almacenar informacion
+
+    let elemento = localStorage.setItem("elemento", "propiedad");
+    console.log(localStorage);
+    let name = sessionStorage.getItem("elemento");
+    console.log(name);
+    //De esta manera mantendra la informacion almacenada de forma local
+    //Mientras que de la manera session estara solo en la sesion
+
+//setItem ()
+    //Añade un item
+//getItem ()
+    //Obtiene un item
+//removeItem ()
+    //Remueve un item
+    setTimeout(() => {
+        let remove = localStorage.removeItem("elemento");
+    },2000)
+    //Se removera a los dos segundos
+//clear ()
+    //Remueve todos los items
+    setTimeout(() => {
+        let remove = localStorage.clear();
+    },2000)
+
+//________________________Drag & Drop__________________________//
+//APPI de arrastrar
+//Eventos del objeto
+    //dragstart     indica cuando comenzamos a agarrar el objeto
+    elemento.addEventListener("dragstart", ()=> console.log(1));
+    //drag      indica cuando lo estamos sosteniendo
+    elemento.addEventListener("drag", ()=> console.log(2));
+    //dragend       indica cuando lo soltamos
+    elemento.addEventListener("dragend", ()=> console.log(3));
+
+//Eventos de Zona
+    //dragenter     verifica si entra a una zona
+    elemento.addEventListener("dragenter", ()=> console.log(1));
+    //dragover      verifica si se mueve por ahi
+    elemento.addEventListener("dragover", ()=> console.log(1));
+    //drop      verifica cuando se suelta
+    elemento.addEventListener("drop", ()=> console.log(1));
+    //dragleave     verifica cuando se va
+    elemento.addEventListener("dragleave", ()=> console.log(1));
+
+    //Podemos bloquear soltarlo en algun lago con un 
+        e.preventDefault(); //dentro de la funcion flecha
+
+//propiedad dataTransfer
+    //getData ()
+    circulo.addEventListener("dragstart", (e)=>{
+        e.dataTransfer.setData("clase", e.target);
+    })
+        //Otra manera de pasar informacion es:
+    rectangulo.addEventListener("drop", (e)=>{
+        console.log(e.dataTransfer.getData("clase"))
+    })
+    //setData ()
+
+//________________________Geolocalization__________________________//
+
+//getCurrentPosition()
+    //parametros(position, error, options)
+    //propiedades de option (enableHightAccuracy, timeout, maximumAge)
+
+    const geolocation = navigator.geolocation;
+
+    console.log(geolocation); //mostrara toda informacion relacionada
+    
+    const posicion = (pos)=> {
+        console.log(pos) //Ubicacion
+        console.log(pos.coords.latitude) //Latitud
+        console.log(pos.coords.longitude) //Longitud
+        
+    }
+    geolocation.getCurrentPosition(posicion) 
+        //Requiere permiso para mostrar ubicacion y obtenerla
+
+    const err = ()=>console.log(e);
+    const options = {
+        maximumAge: 0, //Tiempo que queremos guardar la info en cache
+        timeout: 3000, //Tiempo que tarde en devolver la data
+        enableHightAccuracy: true //Utiliza todos los recursos de posicionamiento, la alta precision
+
+    }
+    geolocation.getCurrentPosition(position, err, options)
+        //De esta manera se trabajan los errores y opciones
+
+
+//watchPosition()
+
+
+
+//
+
+
+
+//
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
