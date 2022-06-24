@@ -400,23 +400,138 @@
 
 
 
-//
+//________________________Historial__________________________//
+
+    console.log(history)
+
+//back() - vuelve atras
+    history.back;
+//forward() - va hacia adelante
+    history.forward;
+//tamaño del historial -
+    
+//go() - va al sitio indicado con un numero relativo
+    history.go(1);
+//pushState() - modifica la URL y conserva la info
+    history.pushState({nombre: "elemento"}, "", "?XYZ")
+    location.href //mostrara un sitio web pero modificado con lo anterior
+//propiedad state y evento popstate
+
+//replaceState - modifica la URL y no la conserva
 
 
+//________________________FileReader__________________________//
+//Archivo creado para actuar cuando trabajamos con eventos
+    let reader = new FileReader();
+    console.log(reader); //Todos sus valores seran null
+//ReadAsText()
+    //No entendi una mierda es re aburrido
+//ReadAsDataURL()
+//Galeria Dinamica
+//Combinar con Drag-Drop
+//Barra de progreso con progress y loadend
 
-//
+//________________________IndexedDB__________________________//
 
+//Caracteristicas
+    //Es una base de datos indexada
+    //Almacena informacion en el navegador de forma similiar a localStorage
+    //Es orientado a objetos
+    //Es asincrona
+    //Trabaja con eventos del DOM
 
-//
+//Prodecimiento de Creacion
+    //Porcesar una solicitud de creacion
 
+    //Objeto IndexedDB
+        const IDBRequest = indexedDB;
+        console.log(IDBRequest);
+            //mostrara una fabrica de base de datos
+    
+    //Metodo open()
+        IDBRequest = indexedDB.open();
+            //abrira la base de datos
 
+    //onupgradeneeded, onsucess, onerror
+    //Si no existe la base de datos, se ejecuta onupgradeneeded y el onsucess
+    //Si existe no se llamara al primero sino al segundo
+        IDBRequest = indexedDB.open("database", 1);
+        IDBRequest.addEventListener("upgradeneeded", ()=>{
+            console.log("Creada") //Verifica si esta creada
+        })
+        IDBRequest.addEventListener("sucess", ()=>{
+            console.log("Todo ok")
+        })
+        IDBRequest.addEventListener("error", ()=> {
+            console.log("Todo mal")
+        })
+//Crear almacen de objetos
+    //Arquitectura de almacenamiento de datos como objetos
+    //Lugar donde guardamos todos, solo se pueden crear cuando creamos la base de datos
 
+//Metodo createObjectStore ()
+    IDBRequest.addEventListener("upgradeneeded", ()=>{
+        const db = IDBRequest.result;
+        db.createObjectStore("nombres", {
+            autoIncrement: true //Con esto creamos un almacen de objetos
+        })
+    })
 
+    //autoIncrement vs KeyPath
+        //Es casi lo mismo, investigar
+//Metodo transaction ()
+    //IDBTransaction.objectStore()
+    //IDBObjectStore.add ()
+    const addObjetos = objecto => {
+        const db = IDBRequest.result;
+        const IDBtransaction = db.transaction("nombres", "readwrite") //Leemos y modificamos, con readonly solo leemos
+        const objectStore = IDBtransaction.objectStore("nombres"); //Indicamos donde queremos trabajar
+        objectStore.add(objeto); //Esto siempre pasara de abrir paso con lo anterior
+        IDBtransaction.addEventListener("complete", ()=> {
+            console.log("Todo ok")
+        }) 
+    }
+    //Creamos una funcion que lea objetos
+    const leerObjetos = ()=> {
+        const db = IDBRequest.result;
+        const IDBTransaction = db.transaction("nombre", "readlony");
+        const objectStore = IDBTransaction.objectStore("nombres");
+        const cursor = objectStore.openCursor();
+        cursor.addEventListener("sucess", ()=> {
+            if (cursor.result) {
+                console.log(cursor.result.value);
+                cursor.result.continue() //De esta manera leera todos los objetos
+            } else console.log ("Todo leido");
+        })
+    }
+    //Para modificar objetos realizamos con IDBObjectStore.put()
+    const modificarObjeto = objeto => {
+        const db = IDBRequest.result;
+        const IDBtransaction = db.transaction("nombres", "readwrite") 
+        const objectStore = IDBtransaction.objectStore("nombres"); 
+        objectStore.put(objeto, key);
+        IDBtransaction.addEventListener("complete", ()=> {
+            console.log("modificado")
+        }) 
+    }
 
-
-
-
-
-
-
+    //Para eliminar con IDBObjectStore.delete()
+        //Para ambos es basicamente lo mismo solo que reemplazando el dato
+        const eliminarObjeto = key => {
+            const db = IDBRequest.result;
+            const IDBtransaction = db.transaction("nombres", "readwrite") 
+            const objectStore = IDBtransaction.objectStore("nombres"); 
+            objectStore.delete(key); 
+            IDBtransaction.addEventListener("complete", ()=> {
+                console.log("eliminado")
+            }) 
+        }
+    //Para obtener data
+        const getIDBData = () => {
+        const db = IDBRequest.result;
+        const IDBtransaction = db.transaction("nombres", "readwrite") 
+        const objectStore = IDBtransaction.objectStore("nombres"); 
+        return [objectStore, IDBtransaction];
+    } //Y toda esta data la podemos reemplazar arriba con obtenerData()
+    const IDBData = getIDBData();
 
