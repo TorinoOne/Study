@@ -386,7 +386,7 @@
         //Requiere permiso para mostrar ubicacion y obtenerla
 
     const err = ()=>console.log(e);
-    const options = {
+    const option = {
         maximumAge: 0, //Tiempo que queremos guardar la info en cache
         timeout: 3000, //Tiempo que tarde en devolver la data
         enableHightAccuracy: true //Utiliza todos los recursos de posicionamiento, la alta precision
@@ -535,3 +535,107 @@
     } //Y toda esta data la podemos reemplazar arriba con obtenerData()
     const IDBData = getIDBData();
 
+//________________________matchMedia__________________________//
+//Funciona de forma similar al @media de CSS
+//matchMedia()
+    const mq = matchMedia("(max-width: 500px)");
+    console.log(mq); //Dara true si la ventana es menor a 500px
+
+    mq.addEventListener("change",()=>{
+        console("Se ejecuto el cambio") //Cada vez que cambie la resolucion mostrara el mensaje
+    })
+
+    //Utilizando en un cambio de estilos segun resolucion:
+    let mqe = matchMedia("(max-width: 800px)");
+    const caja = document.querySelector(".clase");
+    mq.addEventListener("change",()=>{
+        if (mqe.matches) caja.classList.replace("caja", "responsive-caja");
+        else if (caja.className == "responsive-caja") caja.classList.replace("responsive-caja", "caja");
+    })
+
+
+//propiedad match
+
+//evento onchange
+
+//Cuando usarlo: Solo utilizar para cambiar o agregar clases
+
+//________________________Intersection Observer__________________________//
+
+//Que es y para que sirve
+    //intersectionObserver()
+    //callback y options seran siempre pasados como valores en observer
+
+    let Y = document.querySelector(".elemento");
+    const verifyVisibility = (entries) => {
+        const entry = entries[0];
+        console.log(entry.isIntersecting)
+    }
+    var observer = new IntersectionObserver(verifyVisibility); //aca es donde van el cb y options
+    observer.observe(Y);    //Mediante todo esto hacemos que indique cuando un elemento esta siendo mostrado en pantalla
+
+//isIntersecting
+    //Nos indica cada vez que un elemento esta visible el viewport
+
+    const cajas = document.querySelectorAll(".caja");
+    const verifyVisibilitys = (entries) => {
+        for (const entry of entries) {
+            if (entries.isIntersecting) console.log ("Mostrando ",entry.target.textContent)
+        }
+    }       //Mediante todo esta linea de codigo mostrara cada caja visualizada
+    let observer = new IntersectionObserver(verifyVisibilitys);
+    for (const caja of cajas) {
+        observer.observe(caja);
+    }
+//configurar options
+    var options = {
+        root: elementoComoReferencia,
+        rootMargin: margenQueTiene, 
+        treshold: [trabajaConLasMedidas] //Cuando queremos que muestre el evento 
+    }
+//Ejemplo de uso (Lazy Load-Cargar a medida que se baja el scroll, como Face o Insta)
+
+//__________________________Notifications_____________________//
+
+//notification.requestPermission()
+//notification.permission
+    if(!('Notification' in window)) {
+        console.log("No disponibles")
+    }
+    Notification.requestPermission(()=>{
+        if (Notification.permission == "granted") {
+            new Notification("Seguinos")
+        }
+    })
+//notifications (msg, options)
+
+//__________________________WEB WORKERS_________________________//
+    //Cuando un programa esta realizando un proceso no puede realizar otro
+        //ahi es donde le pide ayuda a un WW
+//Tipos de Web Worker: (Dedicated worker, shared worker, servide worker, abstract worker)
+//Dedicated worker: worker() {constructor}
+    const worker = new Worker("worker.js") //y se crea el archivo
+//Parametro Options {type, credentials y name}
+    //Parametro opcional
+    //type hay que pasarle un string con el tipo de trabajador a crear
+    //credentials tambien string que especifica el tipo de credenciales para el trabajador
+    //name especifica un nombre de identificacion
+//Metodo postMessage () {Enviar mensajes entre el WW y el script principal}
+//Evento onmessage {Recibir mensajes entre el WW y el script principal}
+//Metodo terminate() {Finaliza la ejecucion del WW}                             
+                                                        //Esto pasaria en el worker
+    worker.addEventListener("message", e=> {    //addEventListener("message",e=>{
+        console.log(e.data)                     //if (e.data.length > 1) {console.log(e.data);
+    })                                          //postMessage("Todo ok");}})
+    const random = ()=>{
+        worker.postMessage("Buenas");
+        worker.terminate();
+    }
+//Politica de origen cruzado {same-origin}
+    //No podemos trabajar con otros archivos o peticiones que no sean del mismo origen
+    //Debe ser solicitado desde un mismo protocolo (http) y un mismo host(web)
+    //Esto es importante para la seguridad cibernetica, al esta desactivado se corren riesgos
+
+//__________________________NAVIGATOR___________________________//
+
+//
